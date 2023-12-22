@@ -2,19 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 # TODO: Ваш код. containerPort який слухає аплікація потрібно встановити як 8080
 metadata:
- name: lab5_deployment
+ name: labfive_deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: lab5
+      app: labfive
   template:
     metadata:
       labels:
-        app: lab5
+        app: labfive
     spec:
       containers:
-      - name: lab5
+      - name: labfive
         image: DOCKER:NUMBER
         ports:
         - containerPort: 8080
