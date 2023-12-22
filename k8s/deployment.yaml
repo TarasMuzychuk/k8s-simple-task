@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: labfive
-        image: DOCKER:NUMBER
+        image: TARAS:NUMBER
         ports:
         - containerPort: 8080
