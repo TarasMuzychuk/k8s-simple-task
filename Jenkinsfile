@@ -60,6 +60,7 @@ spec:
                     echo 'Pulling new changes'
                     // Крок клонування репозиторію
                     // TODO: ваш код з лабораторної № 4
+                    checkout scm
                 }
             }
         }
@@ -78,6 +79,8 @@ spec:
                     echo 'Testing the application'
                     // Виконання юніт-тестів.
                     // TODO: ваш код з лабораторної № 4
+                     sh 'go get -t -v ./...'
+                     sh 'go test -v ./...'
                 }
             }
         }
@@ -103,6 +106,9 @@ spec:
                     // TODO: Підказка: bitnami/kubectl має доступну утиліту 'sed'
                     // TODO: Але ви можете використовувати будь-яке інше рішення (Kustomize, тощо)
                     // TODO: По-друге: використовуйте kubectl apply з контейнера kubectl щоб застосувати маніфести з директорії k8s
+                    sh "sed -i 's|TARAS|${DOCKER_IMAGE_NAME}|' path/to/deployment.yaml"
+                    sh "sed -i 's|NUMBER|${BUILD_NUMBER}|' path/to/deployment.yaml"
+                    sh 'kubectl apply -f path/to/k8s/'
                 }
             }
         }
@@ -133,6 +139,8 @@ spec:
                 // TODO: За допомогою контейнера ubuntu встановіть `curl`
                 // TODO: Використайте curl, щоб зробити запит на http://labfive:80
                 // TODO: Можливо, вам доведеться почекати приблизно 10 секунд, поки все буде розгорнуто вперше
+                 sh 'apt-get update && apt-get install -y curl'
+                 sh 'curl http://labfive:80'
             }
         }
     }
