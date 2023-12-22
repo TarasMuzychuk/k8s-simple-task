@@ -130,11 +130,10 @@ spec:
     image: ubuntu:22.04
     tty: true
     command:
-    - cat
     - bash
     - '-c'
     - |
-    apt-get update && apt-get install -y curl
+      apt-get update && apt-get install -y curl
 """
                 }
             }
@@ -143,7 +142,6 @@ spec:
                 // TODO: За допомогою контейнера ubuntu встановіть `curl`
                 // TODO: Використайте curl, щоб зробити запит на http://labfive:80
                 // TODO: Можливо, вам доведеться почекати приблизно 10 секунд, поки все буде розгорнуто вперше
-                 sh 'apt-get update && apt-get install -y curl'
                  sh 'curl http://labfive:80'
             }
         }
