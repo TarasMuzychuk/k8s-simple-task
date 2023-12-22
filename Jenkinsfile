@@ -108,7 +108,7 @@ spec:
                     // TODO: По-друге: використовуйте kubectl apply з контейнера kubectl щоб застосувати маніфести з директорії k8s
                     sh "sed -i 's|TARAS|${DOCKER_IMAGE_NAME}|' k8s/deployment.yaml"
                     sh "sed -i 's|NUMBER|${BUILD_NUMBER}|' k8s/deployment.yaml"
-                    sh 'kubectl apply -f path/to/k8s/'
+                    sh 'kubectl apply -f k8s/'
                 }
             }
         }
@@ -131,6 +131,10 @@ spec:
     tty: true
     command:
     - cat
+    - bash
+    - '-c'
+    - |
+    apt-get update && apt-get install -y curl
 """
                 }
             }
